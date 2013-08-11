@@ -2,7 +2,9 @@
 
 ## About
 
-An example project showing a Angular library that can be created using the Yeoman Angular Generator
+An example project showing a Angular library that can be created using the Yeoman Angular Generator.
+
+This is basically just the Angular Generator with some adjustments to the Grunt build that will create assets that can be used with Bower.
 
 ## Usage
 
