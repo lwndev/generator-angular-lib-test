@@ -8,6 +8,7 @@
   "ignore": [
     "app/",
     "test/",
+    "/.*",
     "Gruntfile.js",
     "karma*.js",
     "libpeerconnection.log",
