@@ -1,6 +1,6 @@
 {
   "name": "ga-lib-test",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "dependencies": {
     "karma-script-launcher": "~0.1.0",
     "karma-firefox-launcher": "~0.1.0",
@@ -37,7 +37,8 @@
     "connect-livereload": "~0.2.0",
     "grunt-google-cdn": "~0.2.0",
     "grunt-ngmin": "~0.0.2",
-    "grunt-string-replace": "~0.2.4"
+    "grunt-string-replace": "~0.2.4",
+    "grunt-rename": "~0.1.2"
   },
   "engines": {
     "node": ">=0.8.0"

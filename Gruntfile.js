@@ -99,16 +99,17 @@ module.exports = function (grunt) {
           src: [
             '.tmp',
             '<%= yeoman.dist %>/*',
-            '!<%= yeoman.dist %>/.git*'
+            '!<%= yeoman.dist %>/.git*',
+            '<%= yeoman.bower %>/*'
           ]
         }]
       },
       server: '.tmp',
-      bower: {
+      bowerAssets: {
         files: [{
-          dot: true,
           src: [
-            '<%= yeoman.bower %>/*'
+            '<%= yeoman.bower %>/scripts.js',
+            '<%= yeoman.bower %>/scripts-min.js'
           ]
         }]
       }
@@ -323,6 +324,16 @@ module.exports = function (grunt) {
           ]
         }
       }
+    },
+    rename: {
+      bowerNormal: {
+        src: '<%= yeoman.bower %>/scripts.js',
+        dest: '<%= yeoman.bower %>/ga-lib-test.js'
+      },
+      bowerMin: {
+        src: '<%= yeoman.bower %>/scripts-min.js',
+        dest: '<%= yeoman.bower %>/ga-lib-test-min.js'
+      }
     }
   });
 
@@ -352,11 +363,11 @@ module.exports = function (grunt) {
     'useminPrepare',
     'concurrent:dist',
     'concat',
-    'copy',
+    'copy:dist',
     'cdnify',
     'ngmin',
     'cssmin',
-    'uglify',
+    'uglify:dist',
     'rev',
     'usemin'
   ]);
@@ -371,7 +382,10 @@ module.exports = function (grunt) {
     'ngmin',
     'uglify:bower',
     'copy:bowermin',
-    'usemin'
+    'usemin',
+    'rename:bowerNormal',
+    'rename:bowerMin',
+    'clean:bowerAssets'
   ]);
 
   grunt.registerTask('dist', [
@@ -380,11 +394,15 @@ module.exports = function (grunt) {
     'build'
   ]);
 
-  grunt.registerTask('default', [
-    'clean:bower',
+  grunt.registerTask('bower', [
     'jshint',
     'test',
     'build-bower',
+  ]);
+
+  grunt.registerTask('default', [
+    'jshint',
+    'test',
     'build',
   ]);
 };
